@@ -5,6 +5,8 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+console.log('Page loaded:', window.location.pathname)
+
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -185,7 +187,11 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
-  saveNoteBtn.addEventListener('click', handleNoteSave);
+    console.log('saveNoteBtn:', saveNoteBtn);
+  saveNoteBtn.addEventListener('click', () => {
+    console.log('Save Note button clicked');
+    handleNoteSave();
+  });
   newNoteBtn.addEventListener('click', handleNewNoteView);
   clearBtn.addEventListener('click', renderActiveNote);
   noteForm.addEventListener('input', handleRenderBtns);
